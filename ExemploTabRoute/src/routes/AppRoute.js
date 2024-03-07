@@ -19,3 +19,5 @@ const AppRoute = () => {
         </NavigationContainer>
     );
 }
+
+export default AppRoute;
