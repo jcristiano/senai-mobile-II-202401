@@ -1,6 +1,5 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
-import { Text } from "react-native-reanimated/lib/typescript/Animated";
+import { StyleSheet, View, Text } from "react-native";
 
 
 const SettingsPage = () => {
@@ -14,7 +13,7 @@ const SettingsPage = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignContent: 'center',
+        alignItems: 'center',
         justifyContent: 'center'
     }
 });
