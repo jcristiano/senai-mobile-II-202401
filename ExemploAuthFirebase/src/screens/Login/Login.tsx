@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { StyleSheet, TextInput, View } from "react-native";
+import { ActivityIndicator, StyleSheet, TextInput, View } from "react-native";
 
 const Login = () => {
     
     const [ email, setEmail ] = useState('');
     const [ password, setPassword ] = useState('');
+    const [ loading, setLoading ] = useState(false);
 
     return(
         <View style={styles.container}>
@@ -23,6 +24,12 @@ const Login = () => {
                 onChangeText={ (text) => setPassword(text) }
                 secureTextEntry={true}
                 />
+            { loading ? 
+                (<ActivityIndicator />) : 
+                (<View>
+                    
+                </View>)
+            }
         </View>
     );
 }
@@ -40,6 +47,24 @@ const styles = StyleSheet.create({
         borderRadius: 4,
         padding: 10,
         backgroundColor: '#fff',
+    },
+    buttonContainer: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingVertical: 10,
+    },
+    buttonClick: {
+        backgroundColor: '#006db2',
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderRadius: 20,
+        flex: 1
+    },
+    buttonText: {
+        color: 'white',
+        fontSize: 16,
+        textAlign: 'center'
     }
 });
 
