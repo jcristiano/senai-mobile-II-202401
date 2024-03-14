@@ -11,7 +11,9 @@ const AppRoute = () => {
             <Stack.Navigator initialRouteName="Login">
                 <Stack.Screen 
                     name="Login" 
-                    component={Login} />
+                    component={Login} 
+                    options={{ headerShown : false }}
+                    />
             </Stack.Navigator>
         </NavigationContainer>
     );
