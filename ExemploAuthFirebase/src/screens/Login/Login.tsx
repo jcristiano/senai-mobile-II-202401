@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, TextInput, View } from "react-native";
 
 const Login = () => {
     
@@ -8,7 +8,21 @@ const Login = () => {
 
     return(
         <View style={styles.container}>
-            <Text>Tela de login</Text>
+            <TextInput
+                style={styles.input}
+                placeholder="Email"
+                autoCapitalize="none"
+                value={email}
+                onChangeText={ (text) => setEmail(text) }
+                />
+            <TextInput
+                style={styles.input}
+                placeholder="Password"
+                autoCapitalize="none"
+                value={password}
+                onChangeText={ (text) => setPassword(text) }
+                secureTextEntry={true}
+                />
         </View>
     );
 }
