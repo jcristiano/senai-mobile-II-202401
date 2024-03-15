@@ -1,11 +1,28 @@
 import React, { useState } from "react";
 import { ActivityIndicator, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { FIREBASE_AUTH } from "../../../firebaseConfig";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 const Login = () => {
     
     const [ email, setEmail ] = useState('');
     const [ password, setPassword ] = useState('');
     const [ loading, setLoading ] = useState(false);
+
+    const auth = FIREBASE_AUTH;
+
+    const handleLogin = async () => {
+        setLoading(true);
+        try {
+            const authResponse = await signInWithEmailAndPassword(auth, email, password);
+            console.log(authResponse);
+        } catch(error : any) {
+            console.error(error);
+            alert('Erro de autenticacao: ' + error.message);
+        } finally {
+            setLoading(false);
+        }
+    }
 
     return(
         <View style={styles.container}>
@@ -27,7 +44,7 @@ const Login = () => {
             { loading ? 
                 (<ActivityIndicator />) : 
                 (<View style={styles.buttonContainer}>
-                    <TouchableOpacity style={styles.buttonClick}>
+                    <TouchableOpacity style={styles.buttonClick} onPress={handleLogin}>
                         <Text style={styles.buttonText}>Login</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.buttonClick}>
