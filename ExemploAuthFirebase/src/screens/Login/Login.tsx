@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ActivityIndicator, StyleSheet, TextInput, View } from "react-native";
+import { ActivityIndicator, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 
 const Login = () => {
     
@@ -26,8 +26,13 @@ const Login = () => {
                 />
             { loading ? 
                 (<ActivityIndicator />) : 
-                (<View>
-                    
+                (<View style={styles.buttonContainer}>
+                    <TouchableOpacity style={styles.buttonClick}>
+                        <Text style={styles.buttonText}>Login</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.buttonClick}>
+                        <Text style={styles.buttonText}>Create account</Text>
+                    </TouchableOpacity>
                 </View>)
             }
         </View>
