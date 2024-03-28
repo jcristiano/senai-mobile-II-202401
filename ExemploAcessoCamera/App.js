@@ -1,19 +1,23 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import ActionButton from './src/components/ActionButton';
+import { Button, StyleSheet, Text, View } from 'react-native';
+import { Camera } from 'expo-camera';
 
-export default function App() {
+export default function App() {  
+  
+  const [ permission, requestPermission ] = Camera.useCameraPermissions();
 
-  const handleButtonAction = () => {
-    console.log('Botao Clicado');
+  if (!permission){
+    return(
+      <View style={styles.container}>
+        <Text style={{ textAlign: 'center' }}>Precisamos de acesso a sua camera</Text>
+        <Button onPress={requestPermission} title='Atribuir permissao' />
+      </View>
+    );
   }
+
 
   return (
     <View style={styles.container}>
-      <ActionButton 
-        action={handleButtonAction}
-        title={`Dados na console`}
-        />
+      
     </View>
   );
 }
@@ -21,8 +25,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
 });
