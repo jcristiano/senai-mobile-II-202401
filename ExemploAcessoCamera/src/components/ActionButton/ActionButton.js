@@ -14,9 +14,9 @@ const ActionButton = ({action, title}) => {
             activeOpacity={0.7}
             >
             <FontAwesomeIcon
-                icon={faLightbulb} 
+                icon={faLightbulb}                 
             />
-            <Text>{title}</Text>
+            <Text style={styles.textButton}>{title}</Text>
         </TouchableOpacity>
     );
 }
@@ -30,5 +30,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'row',
         marginTop: 20
+    },
+    textButton: {
+        color: '#fff',
+        fontSize: 18,
+        fontWeight: 'bold',
+        marginLeft: 10
     }
 });
