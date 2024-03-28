@@ -7,6 +7,7 @@ import { faLightbulb } from "@fortawesome/free-solid-svg-icons/faLightbulb";
 const ActionButton = ({action, title}) => {
    
 
+
     return(
         <TouchableOpacity
             style={styles.button}
@@ -38,3 +39,5 @@ const styles = StyleSheet.create({
         marginLeft: 10
     }
 });
+
+export default ActionButton;
