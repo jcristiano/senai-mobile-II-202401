@@ -1,14 +1,21 @@
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import { faLightbulb } from "@fortawesome/free-solid-svg-icons/faLightbulb";
 
 
 const ActionButton = ({action, title}) => {
    
 
     return(
-        <TouchableOpacity>
-            <FontAwesomeIcon />
+        <TouchableOpacity
+            style={styles.button}
+            onPress={action}
+            activeOpacity={0.7}
+            >
+            <FontAwesomeIcon
+                icon={faLightbulb} 
+            />
             <Text>{title}</Text>
         </TouchableOpacity>
     );
