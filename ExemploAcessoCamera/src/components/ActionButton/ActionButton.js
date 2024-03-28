@@ -6,8 +6,6 @@ import { faLightbulb } from "@fortawesome/free-solid-svg-icons/faLightbulb";
 
 const ActionButton = ({action, title}) => {
    
-
-
     return(
         <TouchableOpacity
             style={styles.button}

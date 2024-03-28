@@ -1,11 +1,19 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import ActionButton from './src/components/ActionButton';
 
 export default function App() {
+
+  const handleButtonAction = () => {
+    console.log('Botao Clicado');
+  }
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <ActionButton 
+        action={handleButtonAction}
+        title={`Dados na console`}
+        />
     </View>
   );
 }
