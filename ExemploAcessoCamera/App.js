@@ -1,9 +1,16 @@
 import { Button, StyleSheet, Text, View } from 'react-native';
-import { Camera } from 'expo-camera';
+import { Camera, CameraType, FlashMode } from 'expo-camera';
+import { useState } from 'react';
+import ActionButton from './src/components/ActionButton';
 
 export default function App() {  
   
   const [ permission, requestPermission ] = Camera.useCameraPermissions();
+  const [ ligado, setLigado ] = useState(false);
+
+  const handleToggleCamera = () => {
+    setLigado(!ligado);
+  }
 
   if (!permission){
     return <View><Text>Problema de permissao</Text></View>
@@ -22,8 +29,17 @@ export default function App() {
   return (
     <>
       <View style={styles.container}>
-        
-      </View>      
+        <Camera
+          style={styles.camera}
+          type={CameraType.back}
+          flashMode={ligado ? FlashMode.torch : FlashMode.off}
+
+          />       
+      </View>
+      <ActionButton 
+        action={handleToggleCamera}
+        title={ ligado ? 'Desligar lanterna' : 'Ligar lanterna' }
+        />
     </>
   );
 }
@@ -34,7 +50,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   camera: {
-    width: 0,
-    height: 0
+    width: 300,
+    height: 300
   }
 });
