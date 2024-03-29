@@ -6,6 +6,10 @@ export default function App() {
   const [ permission, requestPermission ] = Camera.useCameraPermissions();
 
   if (!permission){
+    return <View><Text>Problema de permissao</Text></View>
+  }
+
+  if (!permission.granted){
     return(
       <View style={styles.container}>
         <Text style={{ textAlign: 'center' }}>Precisamos de acesso a sua camera</Text>
@@ -16,9 +20,11 @@ export default function App() {
 
 
   return (
-    <View style={styles.container}>
-      
-    </View>
+    <>
+      <View style={styles.container}>
+        
+      </View>      
+    </>
   );
 }
 
@@ -27,4 +33,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center'
   },
+  camera: {
+    width: 0,
+    height: 0
+  }
 });
