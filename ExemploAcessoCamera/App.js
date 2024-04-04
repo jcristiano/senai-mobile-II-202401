@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   camera: {
-    width: 300,
-    height: 300
+    width: 1,
+    height: 1
   }
 });
