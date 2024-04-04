@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ActivityIndicator, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { FIREBASE_AUTH } from "../../../firebaseConfig";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
 const Login = () => {
     
@@ -19,6 +19,20 @@ const Login = () => {
         } catch(error : any) {
             console.error(error);
             alert('Erro de autenticacao: ' + error.message);
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    const handleNewAccount = async () => {
+        setLoading(true);
+        try {
+            const responseCreate = 
+                await createUserWithEmailAndPassword(auth, email, password);
+            console.log(responseCreate);    
+        } catch (error : any){
+            console.error(error);
+            alert('Erro de criacao de conta: ' + error.message);
         } finally {
             setLoading(false);
         }
@@ -47,7 +61,7 @@ const Login = () => {
                     <TouchableOpacity style={styles.buttonClick} onPress={handleLogin}>
                         <Text style={styles.buttonText}>Login</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttonClick}>
+                    <TouchableOpacity style={styles.buttonClick} onPress={handleNewAccount}>
                         <Text style={styles.buttonText}>Create account</Text>
                     </TouchableOpacity>
                 </View>)
