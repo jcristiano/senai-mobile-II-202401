@@ -1,5 +1,5 @@
 import { Accelerometer } from "expo-sensors";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const useShakeDetector = (tempoParaRepouso=500) => {
 
@@ -32,6 +32,9 @@ const useShakeDetector = (tempoParaRepouso=500) => {
             subscription && subscription.remove();
         }
 
+        subscribe();
+
+        return () => unsubscribe();
     }, []);
 
     return {
@@ -39,3 +42,4 @@ const useShakeDetector = (tempoParaRepouso=500) => {
     }
 }
 
+export default useShakeDetector;
