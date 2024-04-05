@@ -12,6 +12,7 @@ const useShakeDetector = (tempoParaRepouso=500) => {
 
         const handleShake = ({x, y, z}) => {
             const aceleracao = Math.sqrt( x ** 2 + y ** 2 + z ** 2);
+            console.log({x, y, z});
             if (aceleracao > corteForcaG) {
                 if(!estaMovimentando){
                     estaMovimentando=true;
@@ -24,8 +25,9 @@ const useShakeDetector = (tempoParaRepouso=500) => {
             }
         };
 
-        const subscribe = () => {
+        const subscribe = async () => {
             subscription = Accelerometer.addListener(handleShake);
+            Accelerometer.setUpdateInterval(200);
         }
 
         const unsubscribe = () => {
