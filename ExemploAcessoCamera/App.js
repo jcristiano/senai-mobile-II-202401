@@ -1,12 +1,20 @@
 import { Button, StyleSheet, Text, View } from 'react-native';
 import { Camera, CameraType, FlashMode } from 'expo-camera';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ActionButton from './src/components/ActionButton';
+import useShakeDetector from './src/hooks/useShakeDetector';
 
 export default function App() {  
   
   const [ permission, requestPermission ] = Camera.useCameraPermissions();
   const [ ligado, setLigado ] = useState(false);
+  const { isShaking } = useShakeDetector(1000);
+
+  useEffect( () => {
+    if (isShaking) {
+      handleToggleCamera();
+    }
+  }, [ isShaking ]);
 
   const handleToggleCamera = () => {
     setLigado(!ligado);
