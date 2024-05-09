@@ -25,3 +25,4 @@ const AppRouter = () => {
     </NavigationContainer>
 }
 
+export default AppRouter;
