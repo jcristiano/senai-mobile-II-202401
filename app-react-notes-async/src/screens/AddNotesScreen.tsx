@@ -1,8 +1,17 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import { Text } from "react-native-paper";
+import { RootStackParamList } from "../types/AppTypes";
+import { RouteProp } from "@react-navigation/native";
 
-const AddNotesScreen: React.FC = () => {
+type AddNoteScreenRouteProp = 
+    RouteProp<RootStackParamList, 'AddNote'>;
+
+type AddNoteScreenProps = {
+    route: AddNoteScreenRouteProp
+}
+
+const AddNotesScreen: React.FC<AddNoteScreenProps> = ({route}) => {
     return(
         <View style={styles.container}>
             <Text>Home Screen</Text>
