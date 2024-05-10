@@ -1,7 +1,7 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { useEffect, useState } from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
-import { Card, Paragraph, Title } from "react-native-paper";
+import { Card, FAB, Paragraph, Title } from "react-native-paper";
 
 const APP_KEY_STORAGE = "APP_KEY_MY_NOTES";
 
@@ -37,6 +37,8 @@ const HomeScreen: React.FC = () => {
                     </Card>
                 ))}
             </ScrollView>
+            <FAB
+                />
         </View>
     )
 }
@@ -49,6 +51,12 @@ const styles = StyleSheet.create({
     },
     card: {
         marginBottom: 16
+    },
+    fab: {
+        position: 'absolute',
+        margin: 16,
+        right: 0,
+        bottom: 0
     }
 })
 
