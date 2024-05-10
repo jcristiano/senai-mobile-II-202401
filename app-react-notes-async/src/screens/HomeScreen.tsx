@@ -1,7 +1,7 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { useEffect, useState } from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
-import { Card } from "react-native-paper";
+import { Card, Paragraph, Title } from "react-native-paper";
 
 const APP_KEY_STORAGE = "APP_KEY_MY_NOTES";
 
@@ -29,8 +29,11 @@ const HomeScreen: React.FC = () => {
         <View style={styles.container}>
             <ScrollView>
                 {notes.map((note, index) => (
-                    <Card key={index} style={styles.card}>
-                        
+                    <Card key={`card-key-${index}`} style={styles.card}>
+                        <Card.Content>
+                            <Title>{`Nota ${index+1}`}</Title>
+                            <Paragraph>{note}</Paragraph>
+                        </Card.Content>
                     </Card>
                 ))}
             </ScrollView>
