@@ -5,7 +5,11 @@ import { Card, FAB, Paragraph, Title } from "react-native-paper";
 
 const APP_KEY_STORAGE = "APP_KEY_MY_NOTES";
 
-const HomeScreen: React.FC = () => {
+type HomeScreenProps = {
+    navigation: any
+}
+
+const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
 
     const [ notes, setNotes ] = useState<string[]>([]);
 
@@ -25,6 +29,12 @@ const HomeScreen: React.FC = () => {
         }
     }
 
+    const handleAddNote = async (note: string) => {
+        const newNotes = [ ...notes, note];
+        setNotes(newNotes);
+        await AsyncStorage.setItem(APP_KEY_STORAGE, JSON.stringify(note));
+    }
+
     return(
         <View style={styles.container}>
             <ScrollView>
@@ -38,6 +48,9 @@ const HomeScreen: React.FC = () => {
                 ))}
             </ScrollView>
             <FAB
+                style={styles.fab}
+                icon={"plus"}
+                onPress={ () => { navigation.navigate('AddNote', )} }
                 />
         </View>
     )
