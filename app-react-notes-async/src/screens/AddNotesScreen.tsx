@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
-import { Text, TextInput } from "react-native-paper";
+import { Button, Text, TextInput } from "react-native-paper";
 import { RootStackParamList } from "../types/AppTypes";
 import { RouteProp } from "@react-navigation/native";
 
@@ -17,13 +17,24 @@ const AddNotesScreen: React.FC<AddNoteScreenProps> = ({route}) => {
 
     const [ note, setNote ] = useState<string>('');
 
-
+    const handleChangeNote = () => {
+        if (note.trim() !== ''){
+            
+        }
+    }
 
     return(
         <View style={styles.container}>
-            <TextInput style={styles.input}>
-
-            </TextInput>
+            <TextInput 
+                style={styles.input}
+                placeholder="Digite a sua nota..."
+                multiline
+                value={note}
+                onChangeText={setNote}
+                />
+            <Button mode="contained" onPress={handleChangeNote}>
+                Adicionar Nota
+            </Button>
         </View>
     )
 }
