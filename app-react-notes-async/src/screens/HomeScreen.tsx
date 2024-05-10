@@ -32,7 +32,15 @@ const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
     const handleAddNote = async (note: string) => {
         const newNotes = [ ...notes, note];
         setNotes(newNotes);
-        await AsyncStorage.setItem(APP_KEY_STORAGE, JSON.stringify(note));
+        try {
+            await AsyncStorage.setItem(
+                APP_KEY_STORAGE, 
+                JSON.stringify(note));
+        } catch(err){
+            console.error("Erro ao salvar nota:", err);
+            
+        }
+        
     }
 
     return(
@@ -50,7 +58,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
             <FAB
                 style={styles.fab}
                 icon={"plus"}
-                onPress={ () => { navigation.navigate('AddNote', )} }
+                onPress={ () => { navigation.navigate('AddNote', handleAddNote)} }
                 />
         </View>
     )
