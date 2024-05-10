@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
-import { Text } from "react-native-paper";
+import { Text, TextInput } from "react-native-paper";
 import { RootStackParamList } from "../types/AppTypes";
 import { RouteProp } from "@react-navigation/native";
 
@@ -12,9 +12,18 @@ type AddNoteScreenProps = {
 }
 
 const AddNotesScreen: React.FC<AddNoteScreenProps> = ({route}) => {
+    
+    const { onAddNote } = route.params;
+
+    const [ note, setNote ] = useState<string>('');
+
+
+
     return(
         <View style={styles.container}>
-            <Text>Home Screen</Text>
+            <TextInput style={styles.input}>
+
+            </TextInput>
         </View>
     )
 }
@@ -24,6 +33,14 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: 'white',
         padding: 16
+    },
+    input: {
+        marginBottom: 16,
+        padding: 10,
+        borderWidth: 1,
+        borderColor: '#ccc',
+        borderRadius: 5,
+        minHeight: 100
     }
 })
 
