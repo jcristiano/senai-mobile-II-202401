@@ -36,9 +36,9 @@ const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
             await AsyncStorage.setItem(
                 APP_KEY_STORAGE, 
                 JSON.stringify(note));
+            navigation.goBack();
         } catch(err){
-            console.error("Erro ao salvar nota:", err);
-            
+            console.error("Erro ao salvar nota:", err);            
         }
         
     }

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
-import { Button, Text, TextInput } from "react-native-paper";
+import { Button, TextInput } from "react-native-paper";
 import { RootStackParamList } from "../types/AppTypes";
 import { RouteProp } from "@react-navigation/native";
 
@@ -19,7 +19,7 @@ const AddNotesScreen: React.FC<AddNoteScreenProps> = ({route}) => {
 
     const handleChangeNote = () => {
         if (note.trim() !== ''){
-            
+            onAddNote(note)   
         }
     }
 
