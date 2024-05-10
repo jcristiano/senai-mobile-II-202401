@@ -9,8 +9,16 @@ const HomeScreen: React.FC = () => {
 
     const [ notes, setNotes ] = useState<string[]>([]);
 
-    const loadNotes = () => {
-        const notasSalvas = await AsyncStorage.getItem(APP_KEY_STORAGE);
+    const loadNotes = async () => {
+        try {
+            const notasSalvas = await AsyncStorage.getItem(APP_KEY_STORAGE);
+            if (notasSalvas !== null ){
+                setNotes(JSON.parse(notasSalvas));
+            }
+        } catch (err) {
+            console.error("Erro ao ler notas:", err);
+            
+        }
     }
 
     return(
