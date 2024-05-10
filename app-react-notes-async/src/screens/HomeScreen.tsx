@@ -58,7 +58,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
             <FAB
                 style={styles.fab}
                 icon={"plus"}
-                onPress={ () => { navigation.navigate('AddNote', handleAddNote)} }
+                onPress={ () => navigation.navigate('AddNote', { onAddNote: handleAddNote }) }
                 />
         </View>
     )

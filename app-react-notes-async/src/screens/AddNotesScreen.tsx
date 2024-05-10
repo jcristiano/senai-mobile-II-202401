@@ -12,7 +12,7 @@ type AddNoteScreenProps = {
 }
 
 const AddNotesScreen: React.FC<AddNoteScreenProps> = ({route}) => {
-    
+    debugger;
     const { onAddNote } = route.params;
 
     const [ note, setNote ] = useState<string>('');
