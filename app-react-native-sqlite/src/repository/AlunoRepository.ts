@@ -7,5 +7,10 @@ export type Aluno = {
 }
 
 export default class AlunoRepository {
-    
+
+    private tableName: string = "aluno";
+
+    private up() : void {
+        
+    }
 }
