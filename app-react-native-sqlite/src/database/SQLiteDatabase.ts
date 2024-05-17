@@ -8,6 +8,18 @@ export const executeTransation = (
     values?: (string | number | null)[]
 ) => {
     return new Promise<SQLite.SQLResultSet>((resolve, reject) => {
-        
+        db.transaction( (tx) => {
+            tx.executeSql(
+                sql,
+                values,
+                (_, resultSet) => {
+                    resolve(resultSet);
+                },
+                (_, error) => {
+                    reject(error);
+                    return true;
+                }
+            )
+        });
     });
 }
