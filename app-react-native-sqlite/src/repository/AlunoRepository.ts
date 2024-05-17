@@ -12,6 +12,10 @@ export default class AlunoRepository {
 
     private tableName: string = "aluno";
 
+    constructor() {
+        this.up();
+    }
+
     private async up() : Promise<void> {
         const sb: StringBuilderUtils = new StringBuilderUtils();
         sb.append(`CREATE TABLE IF NOT EXISTS ${this.tableName} ( `);
@@ -21,5 +25,9 @@ export default class AlunoRepository {
         sb.append("idade INTEGER NOT NULL );");
         const sql: string = sb.toString();
         await executeTransation(sql);
+    }
+
+    public async down(): Promise<void> {
+        await executeTransation(`DROP TABLE ${this.tableName}`);
     }
 }
