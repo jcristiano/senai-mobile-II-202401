@@ -31,13 +31,24 @@ export default class AlunoRepository {
         await executeTransation(`DROP TABLE ${this.tableName}`);
     }
 
-    public create(aluno: Aluno): void {
+    public async create(aluno: Aluno): Promise<number | undefined> {
         const sql: string = `INSERT INTO ${this.tableName} (nome, cpf, idade) VALUES (?, ?, ?)`;
         const args = [
             aluno.nome,
             aluno.cpf,
             aluno.idade
         ];
-        const resultado = executeTransation(sql, args);
+        const resultado = await executeTransation(sql, args);
+        return resultado.insertId;
+    }
+
+    public async listarAlunos(): Promise<Aluno[]> {
+
+        const alunos: Aluno[] = [];
+
+        const sql: string = `SELECT * FROM ${this.tableName}`;
+        const consulta = await executeTransation(sql);
+
+        return alunos;
     }
 }
