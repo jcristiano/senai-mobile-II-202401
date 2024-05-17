@@ -49,6 +49,16 @@ export default class AlunoRepository {
         const sql: string = `SELECT * FROM ${this.tableName}`;
         const consulta = await executeTransation(sql);
 
+        for(let i = 0; i < consulta.rows.length; i++){
+            const aluno = consulta.rows.item(i);
+            alunos.push({
+                id: aluno.id,
+                nome: aluno.nome,
+                cpf: aluno.cpf,
+                idade: aluno.idade
+            });
+        }
+
         return alunos;
     }
 }
