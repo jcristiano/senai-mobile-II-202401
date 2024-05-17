@@ -1,4 +1,4 @@
-export class StringBuilder {
+export class StringBuilderUtils {
     private conteudo : string[];
 
     constructor (){
